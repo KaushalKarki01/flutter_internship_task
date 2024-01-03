@@ -29,7 +29,6 @@ class _DummyPageState extends State<DummyPage> {
       children: [
         Expanded(
           child: FutureBuilder<List<Products>>(
-              // future: apiService.getProducts(),
               future: apiService!.getProducts(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {

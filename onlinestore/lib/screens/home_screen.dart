@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onlinestore/screens/dummy.dart';
+import 'package:onlinestore/services/api_urls.dart';
 import 'package:onlinestore/widgets/category_title.dart';
+import 'package:onlinestore/widgets/search.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,55 +15,54 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+            title: Row(children: [
+              const Text('Fake',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black87)),
+              Text('Commerce',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.amber[600])),
+            ]),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  showSearch(context: context, delegate: SearchProducts());
+                },
+              )
+            ]),
         body: SingleChildScrollView(
-      child: Container(
-        color: const Color.fromARGB(26, 181, 140, 140),
-        child: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: const TextField(
-                    cursorColor: Colors.blueGrey,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'search products here...',
-                        suffixIcon: Icon(
-                          Icons.search,
-                          size: 30,
-                        )),
-                  )),
-              const SizedBox(height: 20),
-              const CategoryTitle(title: 'Clothing'),
-              Container(
-                height: 200,
-                alignment: Alignment.center,
-                child: const DummyPage(
-                    apiUrl:
-                        'https://fakestoreapi.com/products/category/jewelery'),
+          child: Container(
+            color: const Color.fromARGB(26, 181, 140, 140),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  const CategoryTitle(title: 'All Products'),
+                  Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: DummyPage(apiUrl: ApiUrls().allproducts),
+                  ),
+                  const SizedBox(height: 20),
+                  const CategoryTitle(title: 'Jewelleries'),
+                  Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: DummyPage(apiUrl: ApiUrls().jewelleries),
+                  ),
+                  const SizedBox(height: 20),
+                  const CategoryTitle(title: 'Electronics'),
+                  Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: DummyPage(apiUrl: ApiUrls().electronics),
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              const CategoryTitle(title: 'Jewelleries'),
-              Container(
-                height: 200,
-                alignment: Alignment.center,
-                child: const DummyPage(
-                    apiUrl:
-                        'https://fakestoreapi.com/products/category/jewelery'),
-              ),
-              const SizedBox(height: 20),
-              const CategoryTitle(title: 'Electronics'),
-              Container(
-                height: 200,
-                alignment: Alignment.center,
-                child: const DummyPage(
-                    apiUrl:
-                        'https://fakestoreapi.com/products/category/electronics'),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }

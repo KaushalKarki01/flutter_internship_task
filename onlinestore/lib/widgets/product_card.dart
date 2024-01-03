@@ -17,7 +17,14 @@ class ProductCard extends StatelessWidget {
           height: 200,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.white70,
+            color: Colors.white,
+            // boxShadow: const [
+            //   BoxShadow(
+            //       color: Colors.black12,
+            //       offset: Offset(3, 3),
+            //       blurRadius: 3,
+            //       spreadRadius: 0.2)
+            // ],
           ),
           child: Column(children: [
             ClipRRect(
@@ -32,7 +39,7 @@ class ProductCard extends StatelessWidget {
                 height: 120,
               ),
             ),
-            const SizedBox(height: 4),
+            // const SizedBox(height: 4),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(children: [
@@ -55,7 +62,7 @@ class ProductCard extends StatelessWidget {
                     maxLines: 2,
                   ),
                 ])),
-            const SizedBox(height: 4),
+            // const SizedBox(height: 4),
             Text('\$ ${product.price.toString()}',
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 14))

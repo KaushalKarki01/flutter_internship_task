@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onlinestore/screens/error.dart';
 
 class CategoryTitle extends StatelessWidget {
   const CategoryTitle({super.key, required this.title});
@@ -13,7 +14,12 @@ class CategoryTitle extends StatelessWidget {
                 fontSize: 24,
                 fontWeight: FontWeight.w500,
                 color: Colors.black54)),
-        TextButton(onPressed: () {}, child: const Text('See more'))
+        TextButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ErrorScren()));
+            },
+            child: const Text('See more'))
       ]),
     );
   }
